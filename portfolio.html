@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bhavesh Singh | Software Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .hero-gradient { background: radial-gradient(circle at 50% 50%, rgba(56, 189, 248, 0.1) 0%, rgba(15, 23, 42, 1) 100%); }
+        .skill-card:hover { transform: translateY(-5px); border-color: #38bdf8; }
+        .project-card:hover .project-overlay { opacity: 1; }
+        
+        /* AI Chat Animation */
+        @keyframes pulse-soft {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .loading-dots span { animation: pulse-soft 1.5s infinite; }
+        .loading-dots span:nth-child(2) { animation-delay: 0.2s; }
+        .loading-dots span:nth-child(3) { animation-delay: 0.4s; }
+    </style>
+</head>
+<body class="bg-[#0f172a] text-slate-200">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-xl font-extrabold tracking-tighter text-sky-400">BHAVESH<span class="text-white">.SINGH</span></a>
+            <div class="hidden md:flex space-x-8 text-sm font-medium">
+                <a href="#about" class="hover:text-sky-400 transition">About</a>
+                <a href="#skills" class="hover:text-sky-400 transition">Skills</a>
+                <a href="#ai-assistant" class="text-sky-400 font-bold hover:text-sky-300 transition">AI Assistant ✨</a>
+                <a href="#projects" class="hover:text-sky-400 transition">Projects</a>
+                <a href="#contact" class="hover:text-sky-400 transition">Contact</a>
+            </div>
+            <button class="md:hidden text-white"><i data-lucide="menu"></i></button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center hero-gradient px-6 pt-20">
+        <div class="max-w-4xl text-center">
+            <div class="inline-block px-4 py-1.5 mb-6 rounded-full glass text-sky-400 text-sm font-semibold tracking-wide uppercase">
+                Available for Opportunities
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight text-white">
+                Software Engineer & <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-600">GATE Qualifier</span>
+            </h1>
+            <p class="text-lg md:text-xl text-slate-400 mb-10 leading-relaxed max-w-2xl mx-auto">
+                B.Tech CS Student specializing in the MERN stack and Algorithmic Problem Solving. Passionate about building scalable web architectures and solving complex data challenges.
+            </p>
+            <div class="flex flex-col md:flex-row items-center justify-center gap-4">
+                <a href="#projects" class="w-full md:w-auto px-8 py-4 bg-sky-500 hover:bg-sky-600 text-white font-bold rounded-xl transition-all shadow-lg shadow-sky-500/20">
+                    View My Work
+                </a>
+                <a href="#ai-assistant" class="w-full md:w-auto px-8 py-4 glass hover:bg-slate-800 text-white font-bold rounded-xl transition-all border border-sky-500/30">
+                    Ask My AI Assistant ✨
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section id="about" class="py-12 glass border-y border-white/5">
+        <div class="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div class="text-center">
+                <p class="text-3xl font-bold text-white">250+</p>
+                <p class="text-slate-500 text-sm">LeetCode Problems</p>
+            </div>
+            <div class="text-center border-l border-white/10">
+                <p class="text-3xl font-bold text-white">GATE</p>
+                <p class="text-slate-500 text-sm">Qualified (2026)</p>
+            </div>
+            <div class="text-center border-l border-white/10">
+                <p class="text-3xl font-bold text-white">2+</p>
+                <p class="text-slate-500 text-sm">Years Coding</p>
+            </div>
+            <div class="text-center border-l border-white/10">
+                <p class="text-3xl font-bold text-white">MERN</p>
+                <p class="text-slate-500 text-sm">Stack Focus</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Assistant Hub ✨ -->
+    <section id="ai-assistant" class="py-24 px-6 bg-slate-900/30">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-white mb-4">Interactive AI Assistant ✨</h2>
+                <p class="text-slate-400">Ask anything about Bhavesh's technical journey, GATE prep, or project experience.</p>
+                <div class="h-1 w-20 bg-sky-500 rounded mx-auto mt-4"></div>
+            </div>
+
+            <div class="glass rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
+                <!-- Chat Window -->
+                <div id="chat-messages" class="h-80 overflow-y-auto p-6 space-y-4 bg-slate-900/50">
+                    <div class="flex gap-3">
+                        <div class="w-8 h-8 rounded-full bg-sky-500 flex items-center justify-center text-xs font-bold text-white shrink-0">AI</div>
+                        <div class="bg-slate-800 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-slate-300 max-w-[80%] border border-white/5">
+                            Hi! I'm Bhavesh's virtual twin. Want to know about his GATE 2026 score, his LeetCode grind, or his Spotify Clone? Ask away!
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Input Area -->
+                <div class="p-4 bg-slate-800/50 border-t border-white/5 flex gap-2">
+                    <input type="text" id="user-query" placeholder="Ask about Bhavesh's projects..." 
+                        class="flex-1 bg-slate-900/80 border border-white/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-sky-500 transition">
+                    <button id="send-btn" class="bg-sky-500 hover:bg-sky-600 text-white px-5 py-3 rounded-xl transition flex items-center gap-2 font-semibold text-sm">
+                        <span>Send</span> <i data-lucide="send" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Project Brainstormer Quick-Action -->
+            <div class="mt-8 grid md:grid-cols-2 gap-4">
+                <button onclick="brainstormProject()" class="p-4 glass rounded-2xl border border-sky-400/20 hover:bg-sky-500/10 transition text-left group">
+                    <h4 class="text-white font-bold mb-1 flex items-center gap-2">
+                        Project Idea Generator ✨ <i data-lucide="zap" class="w-4 h-4 text-yellow-400"></i>
+                    </h4>
+                    <p class="text-xs text-slate-400">Let AI suggest a high-level project for Bhavesh's stack.</p>
+                </button>
+                <button onclick="askQuestion('Explain your GATE 2026 achievement.')" class="p-4 glass rounded-2xl border border-white/10 hover:bg-slate-800 transition text-left">
+                    <h4 class="text-white font-bold mb-1 text-sm">Brief Profile Pitch ✨</h4>
+                    <p class="text-xs text-slate-400 text-sky-400 underline">"Explain your GATE 2026 achievement."</p>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-24 px-6 max-w-6xl mx-auto">
+        <div class="mb-16">
+            <h2 class="text-3xl font-bold text-white mb-4">Technical Arsenal</h2>
+            <div class="h-1 w-20 bg-sky-500 rounded"></div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Frontend -->
+            <div class="p-8 rounded-2xl glass skill-card transition-all duration-300">
+                <i data-lucide="layout" class="text-sky-400 mb-6 w-10 h-10"></i>
+                <h3 class="text-xl font-bold text-white mb-4">Frontend</h3>
+                <ul class="space-y-3 text-slate-400">
+                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-sky-500"></i> React.js</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-sky-500"></i> JavaScript (ES6+)</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-sky-500"></i> HTML5 / CSS3</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-sky-500"></i> Tailwind CSS</li>
+                </ul>
+            </div>
+            <!-- Backend -->
+            <div class="p-8 rounded-2xl glass skill-card transition-all duration-300">
+                <i data-lucide="server" class="text-sky-400 mb-6 w-10 h-10"></i>
+                <h3 class="text-xl font-bold text-white mb-4">Backend & DB</h3>
+                <ul class="space-y-3 text-slate-400">
+                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-sky-500"></i> Node.js / Express</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-sky-500"></i> REST API Design</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-sky-500"></i> SQL</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-sky-500"></i> MVC Architecture</li>
+                </ul>
+            </div>
+            <!-- Core -->
+            <div class="p-8 rounded-2xl glass skill-card transition-all duration-300">
+                <i data-lucide="code-2" class="text-sky-400 mb-6 w-10 h-10"></i>
+                <h3 class="text-xl font-bold text-white mb-4">Core Tech</h3>
+                <ul class="space-y-3 text-slate-400">
+                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-sky-500"></i> C / C++</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-sky-500"></i> Python</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-sky-500"></i> Data Structures</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-sky-500"></i> Git / GitHub</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 px-6 max-w-6xl mx-auto">
+        <div class="mb-16">
+            <h2 class="text-3xl font-bold text-white mb-4">Featured Projects</h2>
+            <div class="h-1 w-20 bg-sky-500 rounded"></div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+            <!-- Spotify Clone -->
+            <div class="group relative overflow-hidden rounded-3xl glass project-card transition-all duration-500">
+                <div class="p-8">
+                    <div class="flex justify-between items-start mb-6">
+                        <i data-lucide="music" class="text-sky-400 w-10 h-10"></i>
+                        <div class="flex gap-4">
+                            <a href="#" class="text-slate-400 hover:text-white transition"><i data-lucide="github"></i></a>
+                            <a href="#" class="text-slate-400 hover:text-white transition"><i data-lucide="external-link"></i></a>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3 tracking-tight">Spotify Clone</h3>
+                    <p class="text-slate-400 mb-6 text-sm leading-relaxed">
+                        A full-stack music streaming platform featuring dynamic playlists and high-fidelity UI. Engineered with Express.js for the backend and React for the frontend.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 text-xs font-semibold rounded-full bg-slate-800 text-sky-400 border border-sky-400/20">React</span>
+                        <span class="px-3 py-1 text-xs font-semibold rounded-full bg-slate-800 text-sky-400 border border-sky-400/20">Node.js</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Web Animations -->
+            <div class="group relative overflow-hidden rounded-3xl glass project-card transition-all duration-500">
+                <div class="p-8">
+                    <div class="flex justify-between items-start mb-6">
+                        <i data-lucide="sparkles" class="text-sky-400 w-10 h-10"></i>
+                        <div class="flex gap-4">
+                            <a href="#" class="text-slate-400 hover:text-white transition"><i data-lucide="github"></i></a>
+                            <a href="#" class="text-slate-400 hover:text-white transition"><i data-lucide="external-link"></i></a>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3 tracking-tight">Interactive Animations</h3>
+                    <p class="text-slate-400 mb-6 text-sm leading-relaxed">
+                        A library of optimized web animations focused on smooth user transitions. Achieved 60fps performance by optimizing CSS keyframes.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 text-xs font-semibold rounded-full bg-slate-800 text-sky-400 border border-sky-400/20">HTML5</span>
+                        <span class="px-3 py-1 text-xs font-semibold rounded-full bg-slate-800 text-sky-400 border border-sky-400/20">CSS3</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-32 px-6">
+        <div class="max-w-4xl mx-auto glass rounded-[3rem] p-12 text-center relative overflow-hidden border border-sky-400/20 shadow-2xl shadow-sky-400/5">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-sky-500 to-transparent"></div>
+            <h2 class="text-4xl font-extrabold text-white mb-6">Let's build something great.</h2>
+            <p class="text-slate-400 text-lg mb-10">
+                I'm currently looking for software engineering internships. My inbox is always open.
+            </p>
+            <div class="flex flex-col md:flex-row items-center justify-center gap-6">
+                <a href="mailto:bhyy2004@gmail.com" class="flex items-center gap-3 px-8 py-4 bg-white text-[#0f172a] font-bold rounded-2xl hover:bg-slate-200 transition-all">
+                    <i data-lucide="mail"></i> Email Me
+                </a>
+                <div class="flex gap-6">
+                    <a href="https://github.com/bhavesh-singh" target="_blank" class="p-4 glass rounded-2xl hover:text-sky-400 transition-all"><i data-lucide="github"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/5 text-center">
+        <p class="text-slate-500 text-sm mb-2">Designed & Built by Bhavesh Singh</p>
+        <p class="text-slate-600 text-[10px] uppercase tracking-widest">&copy; 2024 • Jaunpur, UP</p>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Gemini API Configuration
+        const apiKey = ""; // Environment handles this
+        const GEMINI_MODEL = "gemini-2.5-flash-preview-09-2025";
+        const SYSTEM_PROMPT = `You are the AI Twin of Bhavesh Singh, a Software Engineer. 
+        Details about Bhavesh:
+        - B.Tech CS Student at Dr. AITD, Kanpur.
+        - Qualified GATE 2026 in 5th Semester.
+        - Solved 250+ LeetCode problems (focus: DP, Graphs).
+        - Tech Stack: MERN (MongoDB, Express, React, Node), C, C++, Python, SQL.
+        - Projects: 1. Spotify Clone (Full-stack), 2. Interactive Animations Library.
+        - Hobbies: Chess, Detective novels, Music.
+        Answer as Bhavesh's assistant. Be professional, tech-savvy, and helpful. 
+        If asked for project ideas, suggest complex engineering challenges fitting his stack.`;
+
+        const chatMessages = document.getElementById('chat-messages');
+        const userQuery = document.getElementById('user-query');
+        const sendBtn = document.getElementById('send-btn');
+
+        async function callGemini(prompt, systemInstruction = SYSTEM_PROMPT, retryCount = 0) {
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${apiKey}`;
+            const payload = {
+                contents: [{ parts: [{ text: prompt }] }],
+                systemInstruction: { parts: [{ text: systemInstruction }] }
+            };
+
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
+                
+                const result = await response.json();
+                return result.candidates?.[0]?.content?.parts?.[0]?.text || "I'm sorry, I couldn't process that.";
+            } catch (error) {
+                if (retryCount < 5) {
+                    const delay = Math.pow(2, retryCount) * 1000;
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                    return callGemini(prompt, systemInstruction, retryCount + 1);
+                }
+                return "Technical glitch! My circuits are a bit fuzzy right now. Please try again in a moment.";
+            }
+        }
+
+        function appendMessage(role, text) {
+            const div = document.createElement('div');
+            div.className = 'flex gap-3 ' + (role === 'user' ? 'justify-end' : '');
+            
+            const contentClass = role === 'user' 
+                ? 'bg-sky-500 text-white rounded-tr-none' 
+                : 'bg-slate-800 text-slate-300 rounded-tl-none border border-white/5';
+                
+            div.innerHTML = `
+                ${role === 'ai' ? '<div class="w-8 h-8 rounded-full bg-sky-500 flex items-center justify-center text-xs font-bold text-white shrink-0">AI</div>' : ''}
+                <div class="${contentClass} rounded-2xl px-4 py-3 text-sm max-w-[80%]">
+                    ${text}
+                </div>
+            `;
+            chatMessages.appendChild(div);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        async function handleChat() {
+            const text = userQuery.value.trim();
+            if (!text) return;
+
+            userQuery.value = '';
+            appendMessage('user', text);
+
+            const loadingId = 'loading-' + Date.now();
+            const loadingDiv = document.createElement('div');
+            loadingDiv.id = loadingId;
+            loadingDiv.className = 'flex gap-3';
+            loadingDiv.innerHTML = `
+                <div class="w-8 h-8 rounded-full bg-sky-500 flex items-center justify-center text-xs font-bold text-white shrink-0">AI</div>
+                <div class="bg-slate-800 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-slate-400 loading-dots">
+                    <span>.</span><span>.</span><span>.</span>
+                </div>
+            `;
+            chatMessages.appendChild(loadingDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            const response = await callGemini(text);
+            document.getElementById(loadingId).remove();
+            appendMessage('ai', response);
+        }
+
+        async function brainstormProject() {
+            appendMessage('user', "✨ Generate a complex project idea for my portfolio.");
+            const prompt = "Suggest a highly technical project idea that utilizes Bhavesh's MERN stack skills and his interest in C++ or performance optimization. Provide a catchy title and a 3-sentence technical breakdown.";
+            
+            const loadingId = 'loading-' + Date.now();
+            const loadingDiv = document.createElement('div');
+            loadingDiv.id = loadingId;
+            loadingDiv.className = 'flex gap-3';
+            loadingDiv.innerHTML = `<div class="w-8 h-8 rounded-full bg-sky-500 flex items-center justify-center text-xs font-bold text-white shrink-0">AI</div><div class="bg-slate-800 rounded-2xl px-4 py-3 text-sm text-slate-400 loading-dots">✨ Thinking...</div>`;
+            chatMessages.appendChild(loadingDiv);
+            
+            const response = await callGemini(prompt);
+            document.getElementById(loadingId).remove();
+            appendMessage('ai', response);
+        }
+
+        function askQuestion(q) {
+            userQuery.value = q;
+            handleChat();
+        }
+
+        sendBtn.addEventListener('click', handleChat);
+        userQuery.addEventListener('keypress', (e) => { if(e.key === 'Enter') handleChat(); });
+    </script>
+</body>
+</html>
